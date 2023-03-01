@@ -3,7 +3,8 @@ from rclpy.node import Node
 import rclpy
 from geometry_msgs.msg import Twist
 
-from irobot_create_msgs.msg import HazardDetectionVector
+from irobot_create_msgs.msg import HazardDetectionVector, HazardDetection
+from geometry_msgs.msg import Twist
 from rclpy import qos
 
 class Wanderer(Node):
@@ -20,8 +21,13 @@ class Wanderer(Node):
 
         self.publisher = self.create_publisher(Twist, 'zelda/cmd_vel', 10)
 
-    def hazard_callback(self, haz):
-        self.get_logger().info('hazard!: "%i"' % len(haz.detections))
+    def hazard_callback(self, haz: HazardDetectionVector):
+        # self.get_logger().info('hazard!: "%i"' % len(haz.detections))
+        # self.get_logger().info(f"hazards found: {haz.detections}")
+
+        for det in haz.detections:
+            if det.type == HazardDetection.BUMP:
+                self.get_logger().info(f"bumped")
 
 def main(args=None):
     rclpy.init(args=args)
