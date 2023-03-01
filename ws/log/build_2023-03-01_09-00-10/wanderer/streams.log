@@ -1,0 +1,35 @@
+[1.290s] Invoking command in '/home/talha/dev/RoboticsHW2/ws/src/wanderer': PYTHONPATH=/home/talha/dev/RoboticsHW2/ws/build/wanderer/prefix_override:/home/talha/dev/RoboticsHW2/ws/install/wanderer/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/wanderer build --build-base /home/talha/dev/RoboticsHW2/ws/build/wanderer/build install --record /home/talha/dev/RoboticsHW2/ws/build/wanderer/install.log --single-version-externally-managed
+[1.632s] running egg_info
+[1.633s] creating ../../build/wanderer/wanderer.egg-info
+[1.633s] writing ../../build/wanderer/wanderer.egg-info/PKG-INFO
+[1.634s] writing dependency_links to ../../build/wanderer/wanderer.egg-info/dependency_links.txt
+[1.634s] writing entry points to ../../build/wanderer/wanderer.egg-info/entry_points.txt
+[1.634s] writing requirements to ../../build/wanderer/wanderer.egg-info/requires.txt
+[1.635s] writing top-level names to ../../build/wanderer/wanderer.egg-info/top_level.txt
+[1.635s] writing manifest file '../../build/wanderer/wanderer.egg-info/SOURCES.txt'
+[1.638s] reading manifest file '../../build/wanderer/wanderer.egg-info/SOURCES.txt'
+[1.639s] writing manifest file '../../build/wanderer/wanderer.egg-info/SOURCES.txt'
+[1.639s] running build
+[1.640s] running build_py
+[1.640s] creating /home/talha/dev/RoboticsHW2/ws/build/wanderer/build
+[1.640s] creating /home/talha/dev/RoboticsHW2/ws/build/wanderer/build/lib
+[1.641s] creating /home/talha/dev/RoboticsHW2/ws/build/wanderer/build/lib/wanderer
+[1.641s] copying wanderer/__init__.py -> /home/talha/dev/RoboticsHW2/ws/build/wanderer/build/lib/wanderer
+[1.641s] running install
+[1.641s] /usr/lib/python3/dist-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.641s]   warnings.warn(
+[1.642s] running install_lib
+[1.643s] creating /home/talha/dev/RoboticsHW2/ws/install/wanderer/lib/python3.10/site-packages/wanderer
+[1.643s] copying /home/talha/dev/RoboticsHW2/ws/build/wanderer/build/lib/wanderer/__init__.py -> /home/talha/dev/RoboticsHW2/ws/install/wanderer/lib/python3.10/site-packages/wanderer
+[1.645s] byte-compiling /home/talha/dev/RoboticsHW2/ws/install/wanderer/lib/python3.10/site-packages/wanderer/__init__.py to __init__.cpython-310.pyc
+[1.645s] running install_data
+[1.646s] creating /home/talha/dev/RoboticsHW2/ws/install/wanderer/share/ament_index
+[1.646s] creating /home/talha/dev/RoboticsHW2/ws/install/wanderer/share/ament_index/resource_index
+[1.646s] creating /home/talha/dev/RoboticsHW2/ws/install/wanderer/share/ament_index/resource_index/packages
+[1.646s] copying resource/wanderer -> /home/talha/dev/RoboticsHW2/ws/install/wanderer/share/ament_index/resource_index/packages
+[1.646s] copying package.xml -> /home/talha/dev/RoboticsHW2/ws/install/wanderer/share/wanderer
+[1.647s] running install_egg_info
+[1.649s] Copying ../../build/wanderer/wanderer.egg-info to /home/talha/dev/RoboticsHW2/ws/install/wanderer/lib/python3.10/site-packages/wanderer-0.0.0-py3.10.egg-info
+[1.651s] running install_scripts
+[1.690s] writing list of installed files to '/home/talha/dev/RoboticsHW2/ws/build/wanderer/install.log'
+[1.723s] Invoked command in '/home/talha/dev/RoboticsHW2/ws/src/wanderer' returned '0': PYTHONPATH=/home/talha/dev/RoboticsHW2/ws/build/wanderer/prefix_override:/home/talha/dev/RoboticsHW2/ws/install/wanderer/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/wanderer build --build-base /home/talha/dev/RoboticsHW2/ws/build/wanderer/build install --record /home/talha/dev/RoboticsHW2/ws/build/wanderer/install.log --single-version-externally-managed
