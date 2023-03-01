@@ -1,0 +1,35 @@
+running egg_info
+creating ../../../build/wanderer/wanderer.egg-info
+writing ../../../build/wanderer/wanderer.egg-info/PKG-INFO
+writing dependency_links to ../../../build/wanderer/wanderer.egg-info/dependency_links.txt
+writing entry points to ../../../build/wanderer/wanderer.egg-info/entry_points.txt
+writing requirements to ../../../build/wanderer/wanderer.egg-info/requires.txt
+writing top-level names to ../../../build/wanderer/wanderer.egg-info/top_level.txt
+writing manifest file '../../../build/wanderer/wanderer.egg-info/SOURCES.txt'
+reading manifest file '../../../build/wanderer/wanderer.egg-info/SOURCES.txt'
+writing manifest file '../../../build/wanderer/wanderer.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/talha/dev/RoboticsHW2/build/wanderer/build
+creating /home/talha/dev/RoboticsHW2/build/wanderer/build/lib
+creating /home/talha/dev/RoboticsHW2/build/wanderer/build/lib/wanderer
+copying wanderer/wanderer.py -> /home/talha/dev/RoboticsHW2/build/wanderer/build/lib/wanderer
+copying wanderer/__init__.py -> /home/talha/dev/RoboticsHW2/build/wanderer/build/lib/wanderer
+running install
+running install_lib
+creating /home/talha/dev/RoboticsHW2/install/wanderer/lib/python3.10/site-packages/wanderer
+copying /home/talha/dev/RoboticsHW2/build/wanderer/build/lib/wanderer/wanderer.py -> /home/talha/dev/RoboticsHW2/install/wanderer/lib/python3.10/site-packages/wanderer
+copying /home/talha/dev/RoboticsHW2/build/wanderer/build/lib/wanderer/__init__.py -> /home/talha/dev/RoboticsHW2/install/wanderer/lib/python3.10/site-packages/wanderer
+byte-compiling /home/talha/dev/RoboticsHW2/install/wanderer/lib/python3.10/site-packages/wanderer/wanderer.py to wanderer.cpython-310.pyc
+byte-compiling /home/talha/dev/RoboticsHW2/install/wanderer/lib/python3.10/site-packages/wanderer/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/talha/dev/RoboticsHW2/install/wanderer/share/ament_index
+creating /home/talha/dev/RoboticsHW2/install/wanderer/share/ament_index/resource_index
+creating /home/talha/dev/RoboticsHW2/install/wanderer/share/ament_index/resource_index/packages
+copying resource/wanderer -> /home/talha/dev/RoboticsHW2/install/wanderer/share/ament_index/resource_index/packages
+copying package.xml -> /home/talha/dev/RoboticsHW2/install/wanderer/share/wanderer
+running install_egg_info
+Copying ../../../build/wanderer/wanderer.egg-info to /home/talha/dev/RoboticsHW2/install/wanderer/lib/python3.10/site-packages/wanderer-0.0.0-py3.10.egg-info
+running install_scripts
+Installing wanderer script to /home/talha/dev/RoboticsHW2/install/wanderer/lib/wanderer
+writing list of installed files to '/home/talha/dev/RoboticsHW2/build/wanderer/install.log'
