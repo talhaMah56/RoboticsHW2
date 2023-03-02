@@ -22,12 +22,23 @@ class Wanderer(Node):
         self.publisher = self.create_publisher(Twist, 'zelda/cmd_vel', 10)
 
     def hazard_callback(self, haz: HazardDetectionVector):
-        # self.get_logger().info('hazard!: "%i"' % len(haz.detections))
+        self.get_logger().info('hazard!: "%i"' % len(haz.detections))
         # self.get_logger().info(f"hazards found: {haz.detections}")
 
         for det in haz.detections:
             if det.type == HazardDetection.BUMP:
                 self.get_logger().info(f"bumped")
+                
+                twist = Twist()
+                #twist.linear.x = 0.2  # Move forward at 0.2 m/s
+                twist.angular.z = 0.5
+
+                for i in range(50):
+                    self.publisher.publish(twist)
+                    self.get_logger().info('Moving robot...')
+                    rclpy.spin_once(self, timeout_sec=0.1)
+
+        
 
 def main(args=None):
     rclpy.init(args=args)
