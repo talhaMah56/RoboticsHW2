@@ -7,11 +7,18 @@ from irobot_create_msgs.msg import HazardDetectionVector, HazardDetection
 from geometry_msgs.msg import Twist
 from rclpy import qos
 
+from math import radians
+from random import uniform
+
+TIMER_INTERVAL = 0.5
+BACKUP_TIME = 5.0
+
+
 class Wanderer(Node):
 
     def __init__(self):
         super().__init__('wanderer')
-        
+
         self.hazard_subscription = self.create_subscription(
             HazardDetectionVector,
             'zelda/hazard_detection',
@@ -20,25 +27,66 @@ class Wanderer(Node):
         self.hazard_subscription  # prevent unused variable warning
 
         self.publisher = self.create_publisher(Twist, 'zelda/cmd_vel', 10)
+        self.move_timer = self.create_timer(
+            TIMER_INTERVAL,
+            self.move_timer_callback
+        )
+        self.backup_timer = None
+        self.spin_timer = None
+
+        self.move_state = "forward"  # forward, spin, backward
+
+    def move_timer_callback(self):
+        twist = Twist()
+
+        self.get_logger().info(f"moving {self.move_state}")
+
+        if self.move_state == "forward":
+            twist.linear.x = 0.1  # m/s
+        elif self.move_state == "spin":
+            twist.angular.z = 1  # rad/s
+        else:  # backward
+            twist.linear.x = -0.01  # m/s
+
+        self.publisher.publish(twist)
+
+    def backup_timer_callback(self):
+        self.move_state = "spin"
+        self.backup_timer.destroy()
+
+        min_spin_time = radians(120)
+        max_spin_time = radians(240)
+
+        spin_time = uniform(min_spin_time, max_spin_time)
+
+        self.spin_timer = self.create_timer(
+            spin_time,
+            self.spin_timer_callback
+        )
+
+    def spin_timer_callback(self):
+        self.move_state = "forward"
+        self.spin_timer.destroy()
 
     def hazard_callback(self, haz: HazardDetectionVector):
-        self.get_logger().info('hazard!: "%i"' % len(haz.detections))
-        # self.get_logger().info(f"hazards found: {haz.detections}")
+        if self.move_state != "forward":
+            return
+
+        # self.get_logger().info('hazard!: "%i"' % len(haz.detections))
 
         for det in haz.detections:
             if det.type == HazardDetection.BUMP:
                 self.get_logger().info(f"bumped")
-                
+
+                # stop the robot
                 twist = Twist()
-                #twist.linear.x = 0.2  # Move forward at 0.2 m/s
-                twist.angular.z = 0.5
+                self.publisher.publish(twist)
 
-                for i in range(50):
-                    self.publisher.publish(twist)
-                    self.get_logger().info('Moving robot...')
-                    rclpy.spin_once(self, timeout_sec=0.1)
+                # start backing up
+                self.move_state = "backward"
+                self.backup_timer = self.create_timer(
+                    BACKUP_TIME, self.backup_timer_callback)
 
-        
 
 def main(args=None):
     rclpy.init(args=args)
@@ -56,5 +104,3 @@ def main(args=None):
 
 if __name__ == '__main__':
     main()
-
-
