@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'wanderer = wanderer.wanderer:main'
+            'wanderer = wanderer.wanderer:main',
+            'reactor = wanderer.reactor:main'
         ],
+
     },
 )
