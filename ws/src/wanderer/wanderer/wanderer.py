@@ -11,7 +11,7 @@ from math import radians
 from random import uniform
 
 TIMER_INTERVAL = 0.5
-BACKUP_TIME = 5.0
+BACKUP_TIME = 1.0
 
 
 class Wanderer(Node):
@@ -44,7 +44,7 @@ class Wanderer(Node):
         if self.move_state == "forward":
             twist.linear.x = 0.1  # m/s
         elif self.move_state == "spin":
-            twist.angular.z = 1  # rad/s
+            twist.angular.z = 1.0  # rad/s
         else:  # backward
             twist.linear.x = -0.01  # m/s
 

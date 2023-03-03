@@ -11,10 +11,11 @@ from math import radians
 from random import uniform
 
 
-FORWARD_DETECTION_THRESHOLD = 10
-TURNAROUND_THRESHOLD = 500
-TURNING_POWER = 0.01
+FORWARD_DETECTION_THRESHOLD = 2.0
+TURNAROUND_THRESHOLD = 100.0
+TURNING_POWER = 0.05
 TIMER_INTERVAL = 0.5
+MAX_TURN_SPEED = 0.5
 
 
 class Reactor(Node):
@@ -39,7 +40,7 @@ class Reactor(Node):
     def move_timer_callback(self):
         if self.spin_timer is not None:
             self.twist = Twist()
-            self.twist.angular.z = 1
+            self.twist.angular.z = 1.0
 
         self.publisher.publish(self.twist)
 
@@ -52,13 +53,16 @@ class Reactor(Node):
         if self.spin_timer is not None:
             return
 
-        self.get_logger().info(f"ir_callback: {ir.readings}")
+        # self.get_logger().info(f"ir_callback: {ir.readings}")
 
         readings = [float(r.value) for r in ir.readings]
 
         left_average = sum(readings[:3]) / 3
         middle_average = sum(readings[2:5]) / 3
         right_average = sum(readings[4:]) / 3
+
+        self.get_logger().info(
+            f"left: {left_average}, middle: {middle_average}, right: {right_average}")
 
         difference = right_average - left_average
 
@@ -73,7 +77,8 @@ class Reactor(Node):
             )
             return
 
-        self.twist.angular.z = max(min(TURNING_POWER * difference, 1), -1)
+        self.twist.angular.z = max(
+            min(TURNING_POWER * difference, MAX_TURN_SPEED), -MAX_TURN_SPEED)
         self.twist.linear.x = 0.1
 
 
